@@ -1,5 +1,5 @@
 const { chromium } = require('playwright');
-const domains = ['grapehut.xyz', 'grapehut.online', 'grapehut.shop', 'grapehut.site', 'grapehut.jp'];
+const domains = ['grapehut.dpdns.org', 'gmeek.dpdns.org'];
 
 async function main() {
 
@@ -21,7 +21,7 @@ async function main() {
     await page.waitForTimeout(3000);
 
     console.log(`🔑 - 点击...`);
-    await page.click('id=rs', { timeout: 5000 });
+    await page.click('id=content', { timeout: 5000 });
     await page.waitForTimeout(2000);
 
     await page.waitForLoadState('networkidle');
