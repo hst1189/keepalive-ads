@@ -8,7 +8,7 @@ async function main() {
 
   try {
     browser = await chromium.launch({
-      headless: false, // 是否启用无头模式，默认为true
+      headless: true, // 是否启用无头模式，默认为true
       viewport: { width: 1280, height: 720 }
     });
 
