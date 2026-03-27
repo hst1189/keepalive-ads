@@ -8,8 +8,8 @@ async function main() {
 
   try {
     browser = await chromium.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
+      headless: false, // 是否启用无头模式，默认为true
+      viewport: { width: 1280, height: 720 }
     });
 
     page = await browser.newPage();
@@ -18,11 +18,11 @@ async function main() {
     let i = Math.floor(Math.random() * domains.length);
     console.log(`📱 - 正在访问网站 ${domains[i]}...`);
     await page.goto(`http://${domains[i]}`, { waitUntil: 'networkidle' });
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(5000);
 
     console.log(`🔑 - 点击...`);
-    await page.click('id=content', { timeout: 5000 });
-    await page.waitForTimeout(2000);
+    await page.mouse.click(640, 360)
+    await page.waitForTimeout(5000);
 
     await page.waitForLoadState('networkidle');
     await page.waitForTimeout(5000);
