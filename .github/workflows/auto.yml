@@ -1,4 +1,4 @@
-name: auto
+name: keepalive-ads
 
 on:
   schedule:
@@ -6,16 +6,17 @@ on:
   workflow_dispatch:
   
 jobs:
-  auto_login:
+  keepalive-ads:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install dependencies
         run: npm install
@@ -23,10 +24,9 @@ jobs:
       - name: Install Playwright and browser
         run: npx playwright install --with-deps chromium
 
-      - name: Run lognin script
+      - name: Run Extension Script
         env:
-          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-          CHAT_ID: ${{ secrets.CHAT_ID }}
-          NETLIB_ACCOUNTS: ${{ secrets.NETLIB_ACCOUNTS }}
-          DNSHE_ACCOUNTS: ${{ secrets.DNSHE_ACCOUNTS }}
+          ACCOUNTS: ${{ secrets.ACCOUNTS }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
         run: npm start
