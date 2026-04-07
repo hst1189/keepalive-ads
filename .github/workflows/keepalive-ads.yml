@@ -29,4 +29,4 @@ jobs:
           ACCOUNTS: ${{ secrets.ACCOUNTS }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-        run: npm start
+        run: xvfb-run npm start
