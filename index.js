@@ -15,11 +15,12 @@ async function main() {
     console.log(`📱 - 正在访问网站 ${domains[i]}...`);
     await page.setDefaultNavigationTimeout(60000); 
     await page.goto(`https://${domains[i]}`);
-    page.locator('iframe[style*="z-index"]').nth(0).waitFor({ state: 'visible' }) 
-    
-    console.log(`🔑 - 点击...`);
+    page.locator('iframe[style*="z-index"]').nth(0).waitFor({ state: 'visible'}) 
+    console.log(`🔑 - 捕获ads`);
     await page.locator('iframe[style*="z-index"]').nth(0).click();
+    console.log(`🔑 - 点击...`);
     await page.waitForTimeout(10000);
+    console.log(`🎉 - 点击成功`);
 
   } catch (e) {
     console.log(`❌ - 异常: ${e.message}`);
