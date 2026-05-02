@@ -1,5 +1,5 @@
 const { chromium } = require('playwright');
-const domains = ['grapehut.dpdns.org', 'gmeek.dpdns.org'];
+const domains = ['gmeek.dpdns.org'];
 
 async function main() {
 
